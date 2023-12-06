@@ -51,25 +51,24 @@ body {
 }
 
 .game {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    max-width: 440px;
-    max-height: 440px;
-    gap: 10px;
-    transform-style: preserve-3d;
-    perspective: 500px;
+    --horizontal-tiles: 4;
+    --vertical-tiles: 3;
+    display: grid;
+    grid-template-columns: repeat(var(--horizontal-tiles), 1fr);
+    grid-template-rows: repeat(var(--vertical-tiles), 1fr);
+    grid-gap: 1rem;
+    width: 100%;
+    max-width: 420px;
 }
 
 .item {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2em;
+    font-size: 2rem;
+    /* anta 40px */
+    padding: 1.5rem;
+    /* anta 60px */
+    display: grid;
+    place-content: center;
+    line-height: 1;
     background: #fff;
     transform: rotateY(180deg);
     transition: 0.25s;
@@ -92,4 +91,11 @@ body {
 .box-open::after,
 .box-match::after {
     transform: rotateY(180deg);
+}
+
+@media only screen and (max-width: 768px) {
+    .game {
+        --horizontal-tiles: 3;
+        --vertical-tiles: 4;
+    }
 }
